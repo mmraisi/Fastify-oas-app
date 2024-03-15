@@ -75,71 +75,6 @@
                         "description": "Validation exception"
                     }
                 }
-            },
-            "put": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "updateTodo",
-                "summary": "Update an existing todo by id",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name"
-                                ],
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "format": "int64"
-                                    },
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Updated Todo",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "required": [
-                                        "name"
-                                    ],
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "format": "int64"
-                                        },
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "description": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid todo id"
-                    },
-                    "404": {
-                        "description": "Todo not found"
-                    }
-                }
             }
         },
         "/todo/{todoId}": {
@@ -162,6 +97,16 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Todo deleted successfully",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "Invalid todo id"
                     },
@@ -213,6 +158,54 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Invalid todo id"
+                    },
+                    "404": {
+                        "description": "Todo not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "todo"
+                ],
+                "operationId": "updateTodo",
+                "summary": "Update an existing todo by id",
+                "parameters": [
+                    {
+                        "name": "todoId",
+                        "in": "path",
+                        "description": "Todo id to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
                     },
                     "400": {
                         "description": "Invalid todo id"

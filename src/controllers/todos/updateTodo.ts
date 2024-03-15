@@ -21,5 +21,5 @@ export const updateTodo = (request: FastifyRequest, reply: FastifyReply) => {
   Object.assign(todoToUpdate, todoPayload);
 
   // Send response with updated todo
-  reply.send(todoToUpdate);
+  reply.code(204).send(todoToUpdate);
 };

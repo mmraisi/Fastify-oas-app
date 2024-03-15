@@ -10,3 +10,6 @@ dist/
 # Ignore any files or directories specific to your editor or IDE
 .vscode/
 .idea/
+
+
+coverage

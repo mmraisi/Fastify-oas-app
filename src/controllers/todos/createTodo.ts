@@ -3,12 +3,12 @@ import { ITodo } from '../../database/todo';
 import { db } from '../../database';
 
 export const createTodo = (request: FastifyRequest, reply: FastifyReply) => {
-  const newTodo = request.body as Omit<ITodo, 'id'>;
-
-  db.todo.push({
+  const newTodo: ITodo = {
     id: db.todo.length + 1,
-    ...newTodo,
-  });
+    ...(request.body as Omit<ITodo, 'id'>),
+  };
 
-  reply.send(db.todo.pop());
+  db.todo.push(newTodo);
+
+  reply.code(201).send(newTodo);
 };

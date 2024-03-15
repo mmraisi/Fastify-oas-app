@@ -5,16 +5,16 @@ interface IDeleteTodoParams {
   todoId: number;
 }
 
-export const updateTodo = (request: FastifyRequest, reply: FastifyReply) => {
+export const deleteTodo = (request: FastifyRequest, reply: FastifyReply) => {
   const todoId = (request.params as IDeleteTodoParams)?.todoId;
-  const todoToUpdate = db.todo.find((todo) => todo.id === todoId);
+  const todoToDelete = db.todo.find((todo) => todo.id === todoId);
 
-  if (!todoToUpdate) {
+  if (!todoToDelete) {
     // Todo with given ID not found
     reply.status(404).send({ message: 'Todo not found' });
     return;
   }
 
   db.todo = db.todo.filter((todo) => todo.id !== todoId);
-  reply.send(db.todo);
+  reply.send('success');
 };
