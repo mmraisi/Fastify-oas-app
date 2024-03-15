@@ -2,11 +2,11 @@ import { FastifyRequest, FastifyReply } from 'fastify';
 import { db } from '../../database';
 
 interface IDeleteTodoParams {
-  id: number;
+  todoId: number;
 }
 
 export const updateTodo = (request: FastifyRequest, reply: FastifyReply) => {
-  const todoId = (request.params as IDeleteTodoParams)?.id;
+  const todoId = (request.params as IDeleteTodoParams)?.todoId;
   const todoToUpdate = db.todo.find((todo) => todo.id === todoId);
 
   if (!todoToUpdate) {

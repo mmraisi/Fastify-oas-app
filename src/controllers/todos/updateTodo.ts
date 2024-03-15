@@ -3,11 +3,11 @@ import { db } from '../../database';
 import { ITodo } from '../../database/todo';
 
 interface IUpdateTodoParams {
-  id: number;
+  todoId: number;
 }
 
 export const updateTodo = (request: FastifyRequest, reply: FastifyReply) => {
-  const todoId = (request.params as IUpdateTodoParams)?.id;
+  const todoId = (request.params as IUpdateTodoParams)?.todoId;
   const todoPayload = request.body as Omit<ITodo, 'id'>;
   const todoToUpdate = db.todo.find((todo) => todo.id === todoId);
 
