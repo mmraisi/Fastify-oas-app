@@ -26,6 +26,8 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "@fastify/static": "^5.0.0",
+    "@fastify/swagger": "^7.6.1",
     "fastify": "^4.26.2",
     "oas-fastify": "^3.1.0"
   }
