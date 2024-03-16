@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "build": "tsc --build",
+    "build": "tsc",
     "dev": "nodemon src/server.ts",
     "test": "vitest . --coverage --no-file-parallelism"
   },

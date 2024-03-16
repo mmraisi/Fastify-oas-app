@@ -29,7 +29,7 @@ const start = async () => {
       handler,
     });
 
-    await server.listen({ port: 3000 });
+    await server.listen({ port: 3000, host: '0.0.0.0' });
     console.log('app is listening on port:', 3000);
   } catch (error) {
     server.log.error(error);
