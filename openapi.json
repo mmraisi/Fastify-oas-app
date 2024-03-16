@@ -1,292 +1,292 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Todo List API",
-        "description": "API for Managing Todo List",
-        "version": "1.0.0"
-    },
-    "servers": [
-        {
-            "url": "http://localhost:3000"
-        }
-    ],
-    "tags": [
-        {
-            "name": "todo",
-            "description": "All Routes for Todo"
-        }
-    ],
-    "paths": {
-        "/todo": {
-            "post": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "createTodo",
-                "summary": "Create a new Todo",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created Todo",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "required": [
-                                        "name"
-                                    ],
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "format": "int64"
-                                        },
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "description": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid input"
-                    },
-                    "422": {
-                        "description": "Validation exception"
-                    }
-                }
-            }
-        },
-        "/todo/{todoId}": {
-            "delete": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "deleteTodo",
-                "summary": "Delete an existing todo by id",
-                "parameters": [
-                    {
-                        "name": "todoId",
-                        "in": "path",
-                        "description": "Todo id to delete",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Todo deleted successfully",
-                        "content": {
-                            "text/plain": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid todo id"
-                    },
-                    "404": {
-                        "description": "Todo not found"
-                    }
-                }
-            },
-            "get": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "getTodoById",
-                "summary": "Get a Todo By id",
-                "parameters": [
-                    {
-                        "name": "todoId",
-                        "in": "path",
-                        "description": "Todo id to fetch todo",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Todo Fetched by id",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "required": [
-                                        "name"
-                                    ],
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "format": "int64"
-                                        },
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "description": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid todo id"
-                    },
-                    "404": {
-                        "description": "Todo not found"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "updateTodo",
-                "summary": "Update an existing todo by id",
-                "parameters": [
-                    {
-                        "name": "todoId",
-                        "in": "path",
-                        "description": "Todo id to update",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "400": {
-                        "description": "Invalid todo id"
-                    },
-                    "404": {
-                        "description": "Todo not found"
-                    }
-                }
-            }
-        },
-        "/todos": {
-            "get": {
-                "tags": [
-                    "todo"
-                ],
-                "operationId": "getTodos",
-                "summary": "Get all Todos",
-                "responses": {
-                    "200": {
-                        "description": "A List of Todos",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "required": [
-                                            "name"
-                                        ],
-                                        "type": "object",
-                                        "properties": {
-                                            "id": {
-                                                "type": "integer",
-                                                "format": "int64"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "description": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "Todo": {
-                "required": [
-                    "name"
-                ],
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todo List API",
+    "description": "API for Managing Todo List",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "todo",
+      "description": "All Routes for Todo"
+    }
+  ],
+  "paths": {
+    "/todo": {
+      "post": {
+        "tags": [
+          "todo"
+        ],
+        "operationId": "createTodo",
+        "summary": "Create a new Todo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
                 "type": "object",
                 "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created Todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object",
+                  "properties": {
                     "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/todo/{todoId}": {
+      "delete": {
+        "tags": [
+          "todo"
+        ],
+        "operationId": "deleteTodo",
+        "summary": "Delete an existing todo by id",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "Todo id to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo deleted successfully",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid todo id"
+          },
+          "404": {
+            "description": "Todo not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "todo"
+        ],
+        "operationId": "getTodoById",
+        "summary": "Get a Todo By id",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "Todo id to fetch todo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo Fetched by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid todo id"
+          },
+          "404": {
+            "description": "Todo not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "todo"
+        ],
+        "operationId": "updateTodo",
+        "summary": "Update an existing todo by id",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "Todo id to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Invalid todo id"
+          },
+          "404": {
+            "description": "Todo not found"
+          }
+        }
+      }
+    },
+    "/todos": {
+      "get": {
+        "tags": [
+          "todo"
+        ],
+        "operationId": "getTodos",
+        "summary": "Get all Todos",
+        "responses": {
+          "200": {
+            "description": "A List of Todos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "name"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "id": {
                         "type": "integer",
                         "format": "int64"
-                    },
-                    "name": {
+                      },
+                      "name": {
                         "type": "string"
-                    },
-                    "description": {
+                      },
+                      "description": {
                         "type": "string"
+                      }
                     }
+                  }
                 }
-            },
-            "NewTodo": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    }
-                }
+              }
             }
+          }
         }
+      }
     }
+  },
+  "components": {
+    "schemas": {
+      "Todo": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "NewTodo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
 }

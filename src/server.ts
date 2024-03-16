@@ -8,7 +8,9 @@ import spec from '../openapi.json';
 //workaround for fastify issue (https://github.com/ahmadnassri/node-oas-fastify/issues/17)
 (spec as { $id?: string }).$id = '$';
 
-const server = fastify();
+const server = fastify({
+  logger: true,
+});
 
 const start = async () => {
   try {
@@ -17,8 +19,7 @@ const start = async () => {
       exposeRoute: true,
       routePrefix: '/docs',
       uiConfig: {
-        docExpansion: 'full',
-        deepLinking: false,
+        docExpansion: 'list',
       },
     });
 
