@@ -1,7 +1,7 @@
-````
+
 # Fastify Todo App
 
-This is a simple Todo application built with Fastify, utilizing oas-fastify for OpenAPI documentation and validation.
+This is a simple Todo application built with Fastify, utilizing oas-fastify for OpenAPI specification 3.0.0 documentation and validation.
 
 ## Installation
 
@@ -9,7 +9,7 @@ This is a simple Todo application built with Fastify, utilizing oas-fastify for 
 
    ```bash
    git clone <repository-url>
-````
+   ````
 
 2. Install dependencies:
 
@@ -20,13 +20,20 @@ This is a simple Todo application built with Fastify, utilizing oas-fastify for 
 
 ## Usage
 
-To start the server, run:
+To start the server using Docker Compose, make sure you have Docker installed on your machine. Then, navigate to the project directory and run the following command:
 
 ```bash
-npm start
+docker-compose up
 ```
 
-The server will be running on port 3000 by default.
+> [!NOTE]
+> The server will be running on port 3000 by default
+
+To stop the server and remove the containers, use the following command:
+
+```bash
+docker-compose up down
+```
 
 ## API Documentation
 
@@ -51,8 +58,4 @@ Contributions are welcome! Feel free to open issues or pull requests.
 
 ## License
 
-[ISC License](LICENSE)
-
-```
-
-```
+[MIT License](LICENSE)
