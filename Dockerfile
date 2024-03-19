@@ -16,8 +16,8 @@ COPY . .
 # Build the TypeScript code
 RUN npm run build
 
-# Expose port 3000 to the outside world
-EXPOSE 3000
+# Expose port 8080 to the outside world
+EXPOSE 8080
 
 # Command to run the application
 CMD ["node", "dist/src/server.js"]
