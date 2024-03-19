@@ -9,33 +9,37 @@ import spec from '../openapi.json';
 (spec as { $id?: string }).$id = '$';
 
 const server = fastify({
-  logger: true,
+	logger: true,
 });
 
 const start = async () => {
-  try {
-    server.register(fastifySwagger, {
-      swagger: spec,
-      exposeRoute: true,
-      routePrefix: '/docs',
-      uiConfig: {
-        docExpansion: 'list',
-      },
-    });
+	try {
+		server.register(fastifySwagger, {
+			swagger: spec,
+			exposeRoute: true,
+			routePrefix: '/docs',
+			uiConfig: {
+				docExpansion: 'list',
+			},
+		});
 
-    // Integrate oas-fastify
-    server.register(oas, {
-      spec,
-      handler,
-    });
+		server.get('/', (_, reply) => {
+			reply.redirect('/docs');
+		});
 
-    await server.listen({ port: 3000, host: '0.0.0.0' });
-    console.log('app is listening on port:', 3000);
-  } catch (error) {
-    server.log.error(error);
-    console.log(error);
-    process.exit(1);
-  }
+		// Integrate oas-fastify
+		server.register(oas, {
+			spec,
+			handler,
+		});
+
+		await server.listen({ port: 3000, host: '0.0.0.0' });
+		console.log('app is listening on port:', 3000);
+	} catch (error) {
+		server.log.error(error);
+		console.log(error);
+		process.exit(1);
+	}
 };
 
 start();
