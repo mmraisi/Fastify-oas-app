@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mmraisi/fastify-todo-ts/compare/v1.0.0...v1.0.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* **main-route:** changed the main route ([d159dd0](https://github.com/mmraisi/fastify-todo-ts/commit/d159dd01a43b365da8e9a0ffce1e9e613ffee668))
+
 # 1.0.0 (2024-03-22)
 
 
