@@ -9,7 +9,7 @@ updates:
           include: scope
       schedule:
           interval: daily
-          time: '10:00'
+          time: '15:12'
           timezone: America/Toronto
 
     - package-ecosystem: docker
