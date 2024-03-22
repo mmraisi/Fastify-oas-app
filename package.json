@@ -1,38 +1,43 @@
 {
-  "name": "fastify-todo-ts",
-  "version": "1.0.0",
-  "description": "Fastify todo api with OAS",
-  "main": "index.js",
-  "scripts": {
-    "start": "ts-node src/server.ts",
-    "build": "tsc",
-    "dev": "nodemon src/server.ts",
-    "test": "vitest . --coverage --no-file-parallelism"
-  },
-  "keywords": [
-    "todo",
-    "ts",
-    "typescript",
-    "OAS"
-  ],
-  "author": "Mahmoud Mraisi",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.11.27",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitest/coverage-v8": "^1.4.0",
-    "eslint": "^8.57.0",
-    "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.2",
-    "vitest": "^1.4.0"
-  },
-  "dependencies": {
-    "@fastify/static": "^5.0.0",
-    "@fastify/swagger": "^7.6.1",
-    "dotenv": "^16.4.5",
-    "fastify": "^4.26.2",
-    "oas-fastify": "^3.1.0"
-  }
+	"name": "fastify-todo-ts",
+	"version": "1.0.0",
+	"description": "Fastify todo api with OAS",
+	"main": "index.js",
+	"scripts": {
+		"start": "ts-node src/server.ts",
+		"build": "tsc",
+		"dev": "nodemon src/server.ts",
+		"test": "vitest . --coverage --no-file-parallelism"
+	},
+	"keywords": [
+		"todo",
+		"ts",
+		"typescript",
+		"OAS"
+	],
+	"author": "Mahmoud Mraisi",
+	"license": "ISC",
+	"devDependencies": {
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/github": "^10.0.2",
+		"@semantic-release/release-notes-generator": "^12.1.0",
+		"@types/node": "^20.11.27",
+		"@typescript-eslint/eslint-plugin": "^7.2.0",
+		"@typescript-eslint/parser": "^7.2.0",
+		"@vitest/coverage-v8": "^1.4.0",
+		"eslint": "^8.57.0",
+		"nodemon": "^3.1.0",
+		"semantic-release": "^23.0.5",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.4.2",
+		"vitest": "^1.4.0"
+	},
+	"dependencies": {
+		"@fastify/static": "^5.0.0",
+		"@fastify/swagger": "^7.6.1",
+		"dotenv": "^16.4.5",
+		"fastify": "^4.26.2",
+		"oas-fastify": "^3.1.0"
+	}
 }
