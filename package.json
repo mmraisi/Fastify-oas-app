@@ -7,7 +7,8 @@
 		"start": "ts-node src/server.ts",
 		"build": "tsc",
 		"dev": "nodemon src/server.ts",
-		"test": "vitest . --coverage --no-file-parallelism"
+		"test": "vitest . --coverage --no-file-parallelism",
+		"ci:semantic-release": "semantic-release"
 	},
 	"keywords": [
 		"todo",
