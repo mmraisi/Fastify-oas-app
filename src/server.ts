@@ -29,7 +29,7 @@ const start = async () => {
 		});
 
 		server.get('/', (_, reply) => {
-			reply.redirect('/docs');
+			reply.send('Ok!');
 		});
 
 		// Integrate oas-fastify
