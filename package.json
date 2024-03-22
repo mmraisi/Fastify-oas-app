@@ -7,8 +7,7 @@
 		"start": "ts-node src/server.ts",
 		"build": "tsc",
 		"dev": "nodemon src/server.ts",
-		"test": "vitest . --coverage --no-file-parallelism",
-		"ci:semantic-release": "semantic-release"
+		"test": "vitest . --coverage --no-file-parallelism"
 	},
 	"keywords": [
 		"todo",
@@ -19,6 +18,9 @@
 	"author": "Mahmoud Mraisi",
 	"license": "ISC",
 	"devDependencies": {
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/github": "^10.0.2",
+		"@semantic-release/release-notes-generator": "^12.1.0",
 		"@types/node": "^20.11.27",
 		"@typescript-eslint/eslint-plugin": "^7.2.0",
 		"@typescript-eslint/parser": "^7.2.0",
@@ -36,29 +38,5 @@
 		"dotenv": "^16.4.5",
 		"fastify": "^4.26.2",
 		"oas-fastify": "^3.1.0"
-	},
-	"release": {
-		"branches": [
-			"main"
-		],
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			[
-				"semantic-release/github",
-				{
-					"assets": [
-						{
-							"path": "dist/*.js",
-							"label": "JS Bundle"
-						},
-						{
-							"path": "dist/*.d.ts",
-							"label": "Type Definitions"
-						}
-					]
-				}
-			]
-		]
 	}
 }
