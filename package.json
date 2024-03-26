@@ -2,11 +2,12 @@
 	"name": "fastify-todo-ts",
 	"version": "0.0.0-semantically-released",
 	"description": "Fastify todo api with OAS",
-	"main": "index.js",
+	"main": "dist/src/index.js",
+	"types": "dist/src/index.d.ts",
 	"scripts": {
-		"start": "ts-node src/server.ts",
-		"build": "tsc",
-		"dev": "nodemon src/server.ts",
+		"start": "ts-node src/index.ts",
+		"build": "rm -rf dist && tsc --build",
+		"dev": "nodemon src/index.ts",
 		"test": "vitest . --coverage --no-file-parallelism"
 	},
 	"keywords": [
