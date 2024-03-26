@@ -1,6 +1,6 @@
 {
 	"name": "fastify-todo-ts",
-	"version": "1.0.0",
+	"version": "0.0.0-semantically-released",
 	"description": "Fastify todo api with OAS",
 	"main": "index.js",
 	"scripts": {
@@ -15,6 +15,9 @@
 		"typescript",
 		"OAS"
 	],
+	"engines": {
+		"node": ">=20"
+	},
 	"author": "Mahmoud Mraisi",
 	"license": "ISC",
 	"devDependencies": {
