@@ -10,10 +10,7 @@ services:
         command:
             - /bin/bash
             - -c
-            - |
-                npm install -g --ignore-scripts --quiet @redocly/cli@latest nodemon
-                until redocly --version; do sleep 1; done
-                npx nodemon --watch /spec --ext yml --exec sh /app/scripts/openapi.sh
+            - /app/scripts/openapi.sh
         stop_grace_period: 1s
 
     server:
