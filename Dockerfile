@@ -1,5 +1,5 @@
 # Use Node.js v18 as the base image
-FROM node:18
+FROM node:20-slim
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 8080
 
 # Command to run the application
-CMD ["node", "dist/src/server.js"]
+CMD ["node", "dist/src/index.js"]
