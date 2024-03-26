@@ -1,13 +1,13 @@
-import { createTodo } from './createTodo';
-import { deleteTodo } from './deleteTodo';
-import { getTodoById } from './getTodoById';
-import { getTodos } from './getTodos';
-import { updateTodo } from './updateTodo';
+import { createTodo } from "./createTodo";
+import { deleteTodo } from "./deleteTodo";
+import { getTodoById } from "./getTodoById";
+import { getTodos } from "./getTodos";
+import { updateTodo } from "./updateTodo";
 
 export const todoController = {
-  createTodo,
-  updateTodo,
-  getTodoById,
-  getTodos,
-  deleteTodo,
+	"create-todo": createTodo,
+	"update-todo": updateTodo,
+	"get-todo": getTodoById,
+	todos: getTodos,
+	"delete-todo": deleteTodo,
 };
