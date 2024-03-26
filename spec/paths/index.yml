@@ -1,0 +1,13 @@
+/todo:
+    post:
+        $ref: todo/create.yml
+
+/todo/{todo_id}:
+    get:
+        $ref: todo/getById.yml
+
+    patch:
+        $ref: todo/update.yml
+
+    delete:
+        $ref: todo/delete.yml

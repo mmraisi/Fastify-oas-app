@@ -1,0 +1,6 @@
+name: todo_id
+in: path
+required: true
+description: todo id
+schema:
+    $ref: ../../schemas/todo/properties/todo_id.yml

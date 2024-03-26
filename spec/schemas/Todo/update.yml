@@ -1,0 +1,10 @@
+type: object
+
+minProperties: 1
+
+properties:
+    name:
+        $ref: ./properties/todo_name.yml
+
+    description:
+        $ref: ./properties/todo_description.yml

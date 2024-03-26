@@ -1,0 +1,28 @@
+summary: Delete a Todo object
+
+description: >
+    Delete the Todo object.
+
+operationId: delete-todo
+
+tags:
+    - Todo
+
+parameters:
+    - $ref: ../../parameters/path/Todo_id.yml
+
+responses:
+    204:
+        description: Todo deleted
+
+    400:
+        $ref: ../../responses/400.yml
+
+    401:
+        $ref: ../../responses/401.yml
+
+    404:
+        $ref: ../../responses/404.yml
+
+    500:
+        $ref: ../../responses/500.yml

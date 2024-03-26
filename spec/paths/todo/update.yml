@@ -1,0 +1,38 @@
+summary: Update Todo object
+
+description: Update Todo object
+
+operationId: update-todo
+
+tags:
+    - Todo
+
+parameters:
+    - $ref: ../../parameters/path/Todo_id.yml
+
+requestBody:
+    description: Todo payload to update
+    required: true
+    content:
+        application/json:
+            schema:
+                $ref: ../../schemas/Todo/update.yml
+responses:
+    200:
+        description: Updated Todo object
+        content:
+            application/json:
+                schema:
+                    $ref: ../../schemas/Todo/read.yml
+
+    400:
+        $ref: ../../responses/400.yml
+
+    401:
+        $ref: ../../responses/401.yml
+
+    404:
+        $ref: ../../responses/404.yml
+
+    500:
+        $ref: ../../responses/500.yml
