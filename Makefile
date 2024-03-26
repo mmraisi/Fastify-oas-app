@@ -4,7 +4,7 @@
 
 # Target to start the 'schema' service in detached mode
 schema:
-	@docker-compose up --build --force-recreate -d schema
+	@docker-compose up --build --force-recreate schema
 
 # Target to start the 'server' service
 server:
