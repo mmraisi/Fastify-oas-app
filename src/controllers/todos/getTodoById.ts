@@ -1,17 +1,17 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
-import { db } from '../../database';
+import { FastifyRequest, FastifyReply } from "fastify";
+import { db } from "../../database";
 
 interface IGetTodoByIdParams {
-  todoId: number;
+	todo_id: string;
 }
 
 export const getTodoById = (request: FastifyRequest, reply: FastifyReply) => {
-  const todoId = (request.params as IGetTodoByIdParams)?.todoId;
-  const result = db.todo.find((todo) => todo.id === todoId);
+	const todo_id = (request.params as IGetTodoByIdParams)?.todo_id;
+	const result = db.todo.find((todo) => todo.id === todo_id);
 
-  if (!result) {
-    reply.status(404).send({ message: 'Todo not found' });
-    return;
-  }
-  reply.send(result);
+	if (!result) {
+		reply.status(404).send({ message: "Todo not found" });
+		return;
+	}
+	reply.send(result);
 };

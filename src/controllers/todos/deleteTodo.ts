@@ -1,20 +1,20 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
-import { db } from '../../database';
+import { FastifyRequest, FastifyReply } from "fastify";
+import { db } from "../../database";
 
 interface IDeleteTodoParams {
-  todoId: number;
+	todo_id: string;
 }
 
 export const deleteTodo = (request: FastifyRequest, reply: FastifyReply) => {
-  const todoId = (request.params as IDeleteTodoParams)?.todoId;
-  const todoToDelete = db.todo.find((todo) => todo.id === todoId);
+	const todo_id = (request.params as IDeleteTodoParams)?.todo_id;
+	const todoToDelete = db.todo.find((todo) => todo.id === todo_id);
 
-  if (!todoToDelete) {
-    // Todo with given ID not found
-    reply.status(404).send({ message: 'Todo not found' });
-    return;
-  }
+	if (!todoToDelete) {
+		// Todo with given ID not found
+		reply.status(404).send({ message: "Todo not found" });
+		return;
+	}
 
-  db.todo = db.todo.filter((todo) => todo.id !== todoId);
-  reply.send('success');
+	db.todo = db.todo.filter((todo) => todo.id !== todo_id);
+	reply.send("Todo deleted");
 };

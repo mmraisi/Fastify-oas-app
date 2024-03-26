@@ -1,25 +1,25 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
-import { db } from '../../database';
-import { ITodo } from '../../database/todo';
+import { FastifyRequest, FastifyReply } from "fastify";
+import { db } from "../../database";
+import { ITodo } from "../../database/todo";
 
 interface IUpdateTodoParams {
-  todoId: number;
+	todo_id: string;
 }
 
 export const updateTodo = (request: FastifyRequest, reply: FastifyReply) => {
-  const todoId = (request.params as IUpdateTodoParams)?.todoId;
-  const todoPayload = request.body as Omit<ITodo, 'id'>;
-  const todoToUpdate = db.todo.find((todo) => todo.id === todoId);
+	const todo_id = (request.params as IUpdateTodoParams)?.todo_id;
+	const todoPayload = request.body as Omit<ITodo, "id">;
+	const todoToUpdate = db.todo.find((todo) => todo.id === todo_id);
 
-  if (!todoToUpdate) {
-    // Todo with given ID not found
-    reply.status(404).send({ message: 'Todo not found' });
-    return;
-  }
+	if (!todoToUpdate) {
+		// Todo with given ID not found
+		reply.status(404).send({ message: "Todo not found" });
+		return;
+	}
 
-  // Update the todo directly in the database
-  Object.assign(todoToUpdate, todoPayload);
+	// Update the todo directly in the database
+	Object.assign(todoToUpdate, todoPayload);
 
-  // Send response with updated todo
-  reply.code(204).send(todoToUpdate);
+	// Send response with updated todo
+	reply.code(200).send(todoToUpdate);
 };

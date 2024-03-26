@@ -26,6 +26,7 @@
 		"@semantic-release/github": "^10.0.2",
 		"@semantic-release/release-notes-generator": "^12.1.0",
 		"@types/node": "^20.11.27",
+		"@types/uuid": "^9.0.8",
 		"@typescript-eslint/eslint-plugin": "^7.3.1",
 		"@typescript-eslint/parser": "^7.2.0",
 		"@vitest/coverage-v8": "^1.4.0",
@@ -41,6 +42,7 @@
 		"@fastify/swagger": "^7.6.1",
 		"dotenv": "^16.4.5",
 		"fastify": "^4.26.2",
-		"oas-fastify": "^3.1.0"
+		"oas-fastify": "^3.1.0",
+		"uuid": "^9.0.1"
 	}
 }
