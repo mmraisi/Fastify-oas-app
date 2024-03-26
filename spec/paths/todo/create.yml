@@ -1,0 +1,36 @@
+summary: Create a new Todo object
+
+description: Create a new Todo object.
+
+operationId: create-todo
+
+tags:
+    - Todo
+
+requestBody:
+    description: Todo object to create
+    required: true
+    content:
+        application/json:
+            schema:
+                $ref: ../../schemas/Todo/create.yml
+
+responses:
+    201:
+        description: Created Todo object
+        content:
+            application/json:
+                schema:
+                    $ref: ../../schemas/Todo/read.yml
+
+    400:
+        $ref: ../../responses/400.yml
+
+    401:
+        $ref: ../../responses/401.yml
+
+    404:
+        $ref: ../../responses/404.yml
+
+    500:
+        $ref: ../../responses/500.yml

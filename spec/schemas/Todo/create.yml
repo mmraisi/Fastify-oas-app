@@ -1,0 +1,12 @@
+type: object
+
+required:
+    - name
+    - description
+
+properties:
+    name:
+        $ref: ./properties/todo_name.yml
+
+    description:
+        $ref: ./properties/todo_description.yml

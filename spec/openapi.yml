@@ -1,0 +1,23 @@
+openapi: 3.0.3
+
+info:
+    version: 0.0.0-semantically-released
+    title: Todo List API
+    description: API for Managing Todo List
+
+servers:
+    - url: http://{host}:{port}
+      description: local
+      variables:
+          host:
+              default: localhost
+              description: hostname
+          port:
+              default: "8080"
+              description: port number
+paths:
+    $ref: paths/index.yml
+
+tags:
+    - name: todo
+      description: todo endpoints

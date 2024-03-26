@@ -1,0 +1,30 @@
+summary: Get all Todo objects
+
+description: Get all Todo objects
+
+operationId: todos
+
+tags:
+    - Todo
+
+responses:
+    200:
+        description: List of Todo objects
+        content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: ../../schemas/Todo/read.yml
+
+    400:
+        $ref: ../../responses/400.yml
+
+    401:
+        $ref: ../../responses/401.yml
+
+    404:
+        $ref: ../../responses/404.yml
+
+    500:
+        $ref: ../../responses/500.yml

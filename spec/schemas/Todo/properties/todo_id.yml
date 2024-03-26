@@ -1,0 +1,4 @@
+type: string
+format: uuid
+description: The todo identifier
+example: 4ab6d51a-e01a-47cf-badc-51a29e83a1c9
