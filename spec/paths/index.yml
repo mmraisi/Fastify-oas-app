@@ -1,4 +1,6 @@
 /todo:
+    get:
+        $ref: todo/get.yml
     post:
         $ref: todo/create.yml
 
