@@ -6,6 +6,8 @@ import oas from "oas-fastify";
 import fastifySwagger from "@fastify/swagger";
 import { todoController as handler } from "./controllers/todos/index";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import spec from "./openapi.json";
 
 //workaround for fastify issue (https://github.com/ahmadnassri/node-oas-fastify/issues/17)
@@ -27,14 +29,10 @@ export const start = async () => {
 	server.register(fastifySwagger, {
 		swagger: spec,
 		exposeRoute: true,
-		routePrefix: "/docs",
+		routePrefix: "/",
 		uiConfig: {
 			docExpansion: "list",
 		},
-	});
-
-	server.get("/", (_, reply) => {
-		reply.send("Ok!");
 	});
 
 	// Integrate oas-fastify

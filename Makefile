@@ -5,15 +5,24 @@
 
 
 
-schema: ## generate schjema (spec.json )
-	@docker-compose up --build --force-recreate schema
-
-server: ## run the server
-	@docker-compose up --build --force-recreate server
+schema: ## generate schema (spec.json )
+	@docker-compose run --no-deps --rm schema
 
 
-run: ## Combined target to run both 'schema' and 'server' services sequentially	
-	@schema server
+install: ## install all deps
+	@docker-compose run --no-deps --rm schema
+	@docker-compose run --no-deps --rm server npm ci --quiet
+	@npm install
 
-help:
+
+start: install ## start the project in foreground	
+	@docker compose up server
+
+stop: ## Stop and remove all containers forcefully
+	@docker compose down --volumes
+
+clean: stop ## remove running containers, volumes, node_modules & anything else
+	@rm -rf node_modules coverage src/openapi.json dist
+
+help: ## help to deplay this
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
