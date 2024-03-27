@@ -28,3 +28,19 @@ services:
             NODE_ENV: dev
             PORT: 8080
         stop_grace_period: 1s
+
+        # ---- OpenAPI Docs server ---- #
+    docs:
+        image: ahmadnassri/rapidoc-server:1.0.8
+        ports:
+            - 8000:8080
+        volumes:
+            - ./spec:/spec
+        environment:
+            spec-url: /spec/openapi.yml
+            render-style: focused
+            schema-style: table
+            schema-description-expanded: "true"
+            show-info: "false"
+            show-header: "false"
+        stop_grace_period: 1s

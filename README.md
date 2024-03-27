@@ -41,7 +41,16 @@ make clean
 
 ## API Documentation
 
-You can access the OpenAPI documentation for the API at [http://localhost:8080](http://localhost:8080). This documentation provides detailed information about the available endpoints, request parameters, responses, and schemas.
+To run the docs server:
+
+> [!NOTE]  
+> THE `make start` will run both the server and docs, to run the docs image alone, use the following command
+
+```
+make docs
+```
+
+You can access the OpenAPI documentation for the API at [http://localhost:8000](http://localhost:8000). This documentation provides detailed information about the available endpoints, request parameters, responses, and schemas.
 
 ## Contributing
 

@@ -1,11 +1,15 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import { join } from "node:path";
 import fastify, { FastifyInstance } from "fastify";
 import oas from "oas-fastify";
-import fastifySwagger from "@fastify/swagger";
+import autoload from "@fastify/autoload";
 import { todoController as handler } from "./controllers/todos/index";
 
+/*
+	The openapi.json will be generated using make schema or & run commands
+*/
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import spec from "./openapi.json";
@@ -18,21 +22,31 @@ const PORT = process.env.PORT ?? 8080;
 export let server: FastifyInstance;
 
 export const start = async () => {
-	server = fastify({
+	// fastify default options
+	const opts = {
+		db: {},
+		logger: {},
+		server: {
+			keepAliveTimeout: 5000,
+			mode: "dev",
+			ignoreTrailingSlash: false,
+		},
+		featureFlags: {},
 		ajv: {
 			customOptions: {
 				strict: false,
 			},
 		},
+	};
+	server = fastify({
+		...opts,
 	});
 
-	server.register(fastifySwagger, {
-		swagger: spec,
-		exposeRoute: true,
-		routePrefix: "/",
-		uiConfig: {
-			docExpansion: "list",
-		},
+	// add plugins
+	server.register(autoload, {
+		dir: join(__dirname, "plugins"),
+		encapsulate: false,
+		options: opts,
 	});
 
 	// Integrate oas-fastify

@@ -14,9 +14,14 @@ install: ## install all deps
 	@docker-compose run --no-deps --rm server npm ci --quiet
 	@npm install
 
+docs: ## start the doc in foreground
+	@docker compose up docs
 
 start: install ## start the project in foreground	
-	@docker compose up server
+	@docker compose up docs server
+
+run: install ## start the project in background	
+	@docker compose up -d docs server
 
 stop: ## Stop and remove all containers forcefully
 	@docker compose down --volumes
